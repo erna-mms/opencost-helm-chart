@@ -1,0 +1,21 @@
+{{- if .Values.opencost.exporter.customPricingConfig.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "opencost.fullname" . }}
+data:
+  default.json: |
+    {
+      "provider": "custom",
+      "description": "Custom price config",
+      "CPU": "{{ .Values.opencost.exporter.customPricingConfig.cpu }}",
+      "spotCPU": "{{ .Values.opencost.exporter.customPricingConfig.spotCpu }}",
+      "RAM": "{{ .Values.opencost.exporter.customPricingConfig.ram }}",
+      "spotRAM": "{{ .Values.opencost.exporter.customPricingConfig.spotRam }}",
+      "GPU": "{{ .Values.opencost.exporter.customPricingConfig.gpu }}",
+      "storage": "{{ .Values.opencost.exporter.customPricingConfig.storage }}",
+      "zoneNetworkEgress": "{{ .Values.opencost.exporter.customPricingConfig.zoneNetworkEgress }}",
+      "regionNetworkEgress": "{{ .Values.opencost.exporter.customPricingConfig.regionNetworkEgress }}",
+      "internetNetworkEgress": "{{ .Values.opencost.exporter.customPricingConfig.regionNetworkEgress }}"
+    }
+{{- end }}

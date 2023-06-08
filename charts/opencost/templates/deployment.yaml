@@ -148,6 +148,10 @@ spec:
             {{- with .Values.opencost.exporter.env }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
+            {{- if .Values.opencost.exporter.customPricingConfig.enabled }}
+            - name: PRICING_CONFIGMAP_NAME
+              value: {{ include "opencost.fullname" . }}
+            {{- end }}
             # Add any additional provided variables
             {{- range $key, $value := .Values.opencost.exporter.extraEnv }}
             - name: {{ $key }}

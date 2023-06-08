@@ -45,6 +45,22 @@ opencost:
   exporter:
     # -- The GCP Pricing API requires a key. This is supplied just for evaluation.
     cloudProviderApiKey: ""
+
+    # -- On-Premises Pricing config (https://www.opencost.io/docs/on-prem)
+    customPricingConfig:
+      enabled: false
+      cpu: "0.031611"
+      spotCpu: "0.006655"
+      ram: "0.004237"
+      spotRam: "0.000892"
+      gpu: "0.95"
+      storage: "0.00005479452"
+      zoneNetworkEgress: "0.01"
+      regionNetworkEgress: "0.01"
+      internetNetworkEgress: "0.12"
+
+
+
     # -- Default cluster ID to use if cluster_id is not set in Prometheus metrics.
     defaultClusterId: 'default-cluster'
     image:
